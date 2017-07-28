@@ -1,0 +1,107 @@
+/* styles.css
+  by Hundred Visions Guy */
+
+/* Mobile First Styles
+   * Colors
+   * Typography
+   * Any non-grid CSS
+*/
+body {
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  font-size: 110%;
+  line-height: 1.45;
+  color: #041B3E;
+  background-color: rgba(193, 173, 157, .6);
+  margin: 0;
+}
+nav, section, article, aside {
+  padding: .5em 1em;
+}
+h1, h2, h3, h4, .logo {
+  font-family: 'Righteous', Tahoma, Monaco, sans-serif;
+}
+nav#main {
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    background-color: rgba(255,255,255,.8);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1000;
+}
+.main-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0 1em 0 0;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  height: 0;
+}
+/* Menu Animation */
+@keyframes menu-animation {
+  0% {
+    opacity: 0;
+    transform: translateY(-500px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.is-showing {
+  height: auto;
+  opacity: 1;
+  animation: menu-animation 1s ease 1;
+}
+.main-nav a {
+  text-decoration: none;
+  display: block;
+  padding: .5em 1em;
+  background-color: #041B3E;
+  color: rgba(230, 230, 215, 1);
+  font-weight: bold;
+  border-bottom: 2px solid rgb(230, 230, 215);
+}
+.main-nav a:hover {
+  color: #041B3E;
+  background-color: rgba(230, 230, 215, 1);
+}
+.main-nav li:last-child a {
+  border-bottom: none;
+}
+#landing {
+  background-image: url('images/landing-bg-md.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 0 0;
+}
+.call-to-action {
+  background-color: rgba(255, 255, 255, .5);
+  padding: .5em 1em;
+}
+/* End of Mobile Styles */
+/* Breakpoints */
+@media only screen and (min-width: 450px) {
+  nav#main {
+    flex-direction: row;
+    padding-right: 1em;
+  }
+  .main-nav {
+    flex-direction: row;
+  }
+}
+@media only screen and (min-width: 590px) {
+  .logo {
+    width: 150px;
+    float: left;
+  }
+}
+@media only screen and (min-width: 900px) {
+  #landing {
+    background-image: url('images/landing-bg-lg.jpg');
+  }
+}
