@@ -6,16 +6,22 @@ $(document).ready(function() {
     @ >= 450px
       - hide toggle button and show menu (add class of is-showing)  */
 // On initial load
-if ($(window).width() < 1450) {
+if ($(window).width() < 450) {
   $('.logo').append('<span class="fa fa-navicon menu-toggle"></span>');
 }
 else {
+  $('ul.main-nav').addClass('is-showing');
 }
 // On resize of window
 $(window).resize(function() {
   if ($(window).width() < 450) {
+    var spans = $('.logo span').length;
+    if (spans < 1) {
+        $('.logo').append('<span class="fa fa-navicon menu-toggle"></span>');
+    }
   }
   else {
+    $('.logo').remove('<span class="fa fa-navicon menu-toggle"></span>');
   }
 });
 /* Add toggle click method
