@@ -8,26 +8,32 @@ $(document).ready(function() {
 // On initial load
 if ($(window).width() < 450) {
   $('.logo').append('<span class="fa fa-navicon menu-toggle"></span>');
+  $('.menu-toggle').click(function() {
+    $('ul.main-nav').toggleClass('is-showing').toggleClass('is-hidden');
+  });
 }
 else {
-  $('ul.main-nav').addClass('is-showing');
+  $('ul.main-nav').addClass('is-showing').removeClass('is-hidden');
 }
 // On resize of window
 $(window).resize(function() {
+  var spans = $('.logo span').length;
   if ($(window).width() < 450) {
-    var spans = $('.logo span').length;
     if (spans < 1) {
         $('.logo').append('<span class="fa fa-navicon menu-toggle"></span>');
+        $('ul.main-nav').removeClass('is-showing');
+        $('ul.main-nav').addClass('is-hiding');
     }
+      $('.menu-toggle').click(function() {
+        $('ul.main-nav').toggleClass('is-showing');
+      });
+
   }
   else {
-    $('.logo').remove('<span class="fa fa-navicon menu-toggle"></span>');
+    if (spans >= 1) {
+      $('.logo').remove('span.fa');
+    }
+    $('ul.main-nav').addClass('is-showing');
   }
 });
-/* Add toggle click method
-      - toggle class of is-showing
-  */
-  $('.menu-toggle').click(function() {
-    $('ul.main-nav').toggleClass('is-showing');
-  });
 });
